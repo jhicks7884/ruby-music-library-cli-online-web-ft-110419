@@ -6,6 +6,7 @@ class MusicLibraryController
 
   def call
     user_input = ""
+    
      while user_input != "exit"
       puts "Welcome to your music library!"
       puts "To list all of your songs, enter 'list songs'."
@@ -18,6 +19,7 @@ class MusicLibraryController
       puts "What would you like to do?"
 
        user_input = gets.strip
+       
     case user_input
       when 'list songs'
           list_songs
@@ -45,8 +47,8 @@ class MusicLibraryController
   end
 
   def list_artists
-     Artist.all.sort_by {|artist| artist.name }.each.with_index(1) do |artist, index|
-      puts "#{index}. #{artist.name}"
+    Artist.all.sort{ |a, b| a.name <=> b.name }.each.with_index(1) do |a, i|
+  puts "#{i}. #{a.name}"
     end
   end
 
